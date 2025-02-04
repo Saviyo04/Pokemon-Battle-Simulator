@@ -1,0 +1,60 @@
+Pokemon Battle Simulator (PBS)
+1.	Introduction
+
+PBS would be a game mechanic inspired by Pokémon, where two Pokémon face each other in a turn-based battle. 
+Each Pokémon has unique characteristics, such as Name, Type, Health Points (HP), and Special Attacks that 
+influence the battle's outcome. Since they are essential for the correct functioning of the game, these variables 
+have been set as private variables. To access these variables, you need to use getters and setters, 
+which are enclosed in their respective properties labeled (name, type, hp, special_attack).
+##################################################################################################################
+2.	How does it work?
+The code is designed to simulate a battle between two Pokémon, creating Pokémon objects using the Pokemon class 
+defined in the pokemon.py file.
+The main method of the class is attack, which manages the battle dynamics by calculating the damage inflicted 
+on the opponent. To do so, it uses some temporary variables ("dummy") that store information about the state of the
+opponent's Pokémon. This approach is made possible by the fact that the attack method accepts as an argument a 
+Pokemon object representing the opponent, allowing you to directly modify its data and update the battle state.
+
+The damage calculation is supported by two methods: "_damage_element_bonus" and "_remaining_hp". 
+The first method determines whether there is a damage bonus based on the type of the Pokémon, 
+reflecting the mechanics of the simulation in which some types of Pokémon are more effective against others. 
+The second method calculates the damage inflicted as a percentage of the total health points of the opponent's Pokémon.
+At the end of the attack, the attack method returns a string that summarizes the details of the attack.
+The battle simulation is implemented in the Battle class, defined in the battle.py file. 
+This class creates two Trainer objects, which are instances derived from the Trainer class. 
+Each trainer can have a maximum of two Pokémon in their team, and the battle continues until all the Pokémon 
+of one team are defeated.
+The two methods in question have underscores at the beginning of their names to indicate that they are intended 
+for internal use and should not be accessed directly. This is because modifying these methods might disrupt the 
+functionality of the program, making it unreliable.
+
+The mechanics involve a succession of turns in which the Pokémon of the two trainers face each other, 
+with the attack method of the Pokemon class that manages the clashes between the Pokémon. During the battle, 
+the Pokémon attack alternately until they run out of life points. The battle ends when all the Pokémon of 
+one of the two teams have been defeated, decreeing the victory of the other trainer.
+
+Since the program does not allow user input and each computation occurs randomly, I found it challenging to 
+incorporate try and except blocks. In the future, I definitely plan to revisit and improve this simulator. 
+My goal is to implement user interaction by allowing the player to choose their Pokémon.
+
+For the project, I also intend to create various special items, such as candies that can help Pokémon recover 
+health or increase attack power. The player will be able to choose when to use these items, depending on the size 
+and strategy of their team.
+
+##################################################################################################################
+3.  OOP in the program:
+This program includes the following implementations, adhering to the principles of Object-Oriented Programming (OOP).
+
+Firstly, the program captures both the "is-a" and "has-a" relationships. Each type of Pokémon defined in the pokemon_elem.py 
+file is a Pokémon, demonstrating the "is-a" relationship.
+
+The "has-a" relationship is represented in the trainer.py file, where each Trainer has a Pokémon that is part of 
+their team.
+
+Encapsulation is implemented in the pokemon.py file, where variables such as the Pokémon's name and HP are 
+protected, and access to them is controlled through getter and setter properties.
+
+Additionally, Inheritance is used, as each Pokémon type in the pokemon_elem.py file inherits certain variables 
+from the constructor in the pokemon.py file. This significantly reduces the amount of code that needs to be written.
+
+Finally, the trainer.py file includes error handling for expected value errors, ensuring robust code execution.
